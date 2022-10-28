@@ -18,8 +18,6 @@ const scope = [
   "user-top-read",
   "playlist-read-private",
   "playlist-read-collaborative",
-  "playlist-modify-private",
-  "playlist-modify-public",
   "streaming",
   "user-read-playback-position",
 ];
