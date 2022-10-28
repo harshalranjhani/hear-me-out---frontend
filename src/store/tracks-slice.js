@@ -7,7 +7,7 @@ const tracksSlice = createSlice({
   },
   reducers: {
     setCurrentTrack(state, action) {
-      console.log("setting current track to redux store...");
+      // console.log("setting current track to redux store...");
       const newState = { currentTrack: action.payload.currentTrack };
       return newState;
     },

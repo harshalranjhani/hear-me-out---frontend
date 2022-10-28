@@ -21,7 +21,7 @@ const FollowedArtists = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       setArtists(response.data.artists.items);
     };
 

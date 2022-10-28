@@ -33,7 +33,7 @@ export default function Search() {
         },
       }
     );
-    console.log(response);
+    // console.log(response);
     setSearchData(response.data);
   };
 
@@ -52,7 +52,7 @@ export default function Search() {
         }
       );
       setRecommendationData(response.data);
-      console.log(recommendationData);
+      // console.log(recommendationData);
     };
 
     if (currentTrack && !searchData.length) {

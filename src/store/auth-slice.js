@@ -10,7 +10,7 @@ const authSlice = createSlice({
   },
   reducers: {
     setToken(state, action) {
-      console.log("setting token");
+      // console.log("setting token");
       const newState = {
         code: action.payload.code,
         accessToken: action.payload.accessToken,
@@ -18,7 +18,7 @@ const authSlice = createSlice({
         expiresIn: action.payload.expiresIn,
       };
       localStorage.setItem("userAccess", JSON.stringify(newState));
-      console.log(newState);
+      // console.log(newState);
       return newState;
     },
     setRefreshToken(state, action) {

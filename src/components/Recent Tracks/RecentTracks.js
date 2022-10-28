@@ -38,7 +38,7 @@ const RecentTracks = () => {
     overflowY: "auto",
     fontSize: "1.4rem",
   });
-  console.log(recentlyPlayedTracks);
+  // console.log(recentlyPlayedTracks);
   return (
     <>
       <Drawer

@@ -13,7 +13,7 @@ import AssistantIcon from "@mui/icons-material/Assistant";
 export default function ArtistRecommendations({ recommendationData }) {
   const currentTrack = useSelector((state) => state.tracks.currentTrack);
   const [lyrics, setLyrics] = React.useState("");
-  console.log(currentTrack);
+  // console.log(currentTrack);
 
   React.useEffect(() => {
     if (!currentTrack.item) return;

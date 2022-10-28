@@ -34,7 +34,7 @@ function Player(props) {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       // playerPlaying = response.data.is_playing;
       setPlayerPlaying(response.data.is_playing);
       if (response.status === 204) {
@@ -56,7 +56,7 @@ function Player(props) {
         },
       }
     );
-    console.log(response);
+    // console.log(response);
     setCurrentlyPlaying(response.data);
     setPlayerPlaying(response.data.is_playing);
     dispatch(tracksActions.setCurrentTrack({ currentTrack: response.data }));

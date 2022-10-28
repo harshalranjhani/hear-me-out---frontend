@@ -16,9 +16,9 @@ import Feed from "./components/Feed/Feed";
 function App() {
   const accessToken = useSelector((state) => state.auth.accessToken);
   // const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-  console.log(accessToken);
+  // console.log(accessToken);
   const currentUser = useSelector((state) => state.user.user);
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <div className="App">
       <Navbar />
