@@ -1,0 +1,26 @@
+body {
+  background-color: #1db954;
+  overflow-y: hidden;
+  user-select: none;
+}
+
+.buttonDiv {
+  position: absolute;
+  z-index: 10;
+  margin-top: 22rem;
+  margin-left: 32rem;
+}
+
+@media all and (max-width: 780px) {
+  .buttonDiv {
+    margin-top: 23rem;
+    margin-left: 1.15rem;
+  }
+}
+
+@media all and (max-width: 1080px) {
+  .buttonDiv {
+    margin-top: 22rem;
+    margin-left: 20rem;
+  }
+}

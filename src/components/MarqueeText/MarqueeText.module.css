@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+
+.marquee {
+  letter-spacing: 13px;
+  font-family: Oswald, sans-serif;
+  height: 250px;
+  font-size: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  /* background-color: blue; */
+  z-index: -1;
+  --gradient-color: rgb(0, 0, 0);
+}
+
+.overlay {
+  --gradient-color: transparent;
+}
+
+@media all and (max-width:780px){
+  .marquee{
+    height: 250px;
+  }
+}
