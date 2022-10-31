@@ -23,7 +23,10 @@ export default function Search() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (searchTerm.current.value === "") setSearchData([]);
+    if (searchTerm.current.value === "") {
+      setSearchData([]);
+      return;
+    }
     const response = await axios.get(
       `https://api.spotify.com/v1/search?q=${searchTerm.current.value}&type=track,artist,album&include_external=audio&limit=35`,
       {
