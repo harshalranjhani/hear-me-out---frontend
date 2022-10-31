@@ -23,7 +23,7 @@ export default function Search() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (searchTerm.current.value === "") {
+    if (searchTerm.current.value.trim() === "") {
       setSearchData([]);
       return;
     }
