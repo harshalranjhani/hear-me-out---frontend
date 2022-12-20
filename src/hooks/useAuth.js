@@ -11,7 +11,7 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post("https://hear-me-out-backend.vercel.app/", { code })
+      .post("https://hear-me-out-backend.vercel.app/register", { code })
       .then((res) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
@@ -45,7 +45,7 @@ export default function useAuth(code) {
     if (!storedRefreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("https://hear-me-out-backend.vercel.app/", { storedRefreshToken })
+        .post("https://hear-me-out-backend.vercel.app/refresh", { storedRefreshToken })
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setExpiresIn(res.data.expiresIn);
@@ -62,7 +62,7 @@ export default function useAuth(code) {
     }, (expiresIn - 60) * 1000);
 
     return () => clearInterval(interval);
-  }, [refreshToken, expiresIn]);
+  }, [refreshToken, expiresIn, accessToken, dispatch]);
 
   return accessToken;
 }

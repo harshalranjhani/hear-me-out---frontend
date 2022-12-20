@@ -18,7 +18,7 @@ export default function ArtistRecommendations({ recommendationData }) {
   React.useEffect(() => {
     if (!currentTrack.item) return;
     axios
-      .get("https://hear-me-out-backend.vercel.app/", {
+      .get("https://hear-me-out-backend.vercel.app/lyrics", {
         params: {
           title: currentTrack.item.name,
           artist: currentTrack.item.artists[0].name,
