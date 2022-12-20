@@ -82,7 +82,7 @@ const ResponsiveAppBar = () => {
         );
       }
       // console.log(response.data.email);
-      await axios.post("https://hear-me-out-backend.vercel.app/", {
+      await axios.post("https://hear-me-out-backend.vercel.app/register", {
         email: response.data.email,
       });
     };
