@@ -18,7 +18,7 @@ export default function ArtistRecommendations({ recommendationData }) {
   React.useEffect(() => {
     if (!currentTrack.item) return;
     axios
-      .get("https://sheltered-chamber-14740.herokuapp.com/lyrics", {
+      .get("https://hear-me-out-backend.vercel.app/", {
         params: {
           title: currentTrack.item.name,
           artist: currentTrack.item.artists[0].name,

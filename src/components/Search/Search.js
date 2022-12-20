@@ -62,7 +62,7 @@ export default function Search() {
       getRecommendations();
     }
     // getRecommendations();
-  }, [currentTrack, searchData.length]);
+  }, [accessToken, artistIds, currentTrack, searchData.length]);
 
   return (
     <div style={{ width: 500 }}>

@@ -82,7 +82,7 @@ const ResponsiveAppBar = () => {
         );
       }
       // console.log(response.data.email);
-      await axios.post("https://sheltered-chamber-14740.herokuapp.com/register", {
+      await axios.post("https://hear-me-out-backend.vercel.app/", {
         email: response.data.email,
       });
     };

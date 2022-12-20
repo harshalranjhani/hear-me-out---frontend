@@ -11,7 +11,7 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post("https://sheltered-chamber-14740.herokuapp.com/login", { code })
+      .post("https://hear-me-out-backend.vercel.app/", { code })
       .then((res) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
@@ -45,7 +45,7 @@ export default function useAuth(code) {
     if (!storedRefreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("https://sheltered-chamber-14740.herokuapp.com/refresh", { storedRefreshToken })
+        .post("https://hear-me-out-backend.vercel.app/", { storedRefreshToken })
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setExpiresIn(res.data.expiresIn);
