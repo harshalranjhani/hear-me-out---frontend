@@ -11,7 +11,7 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post("https://hear-me-out-backend.vercel.app/register", { code })
+      .post("https://hear-me-out-backend.vercel.app/login", { code })
       .then((res) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
