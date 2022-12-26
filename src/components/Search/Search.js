@@ -58,11 +58,11 @@ export default function Search() {
       // console.log(recommendationData);
     };
 
-    if (currentTrack && !searchData.length) {
-      getRecommendations();
-    }
-    // getRecommendations();
-  }, [accessToken, artistIds, searchData.length]);
+    // if (currentTrack && !searchData.length) {
+    //   getRecommendations();
+    // }
+    getRecommendations();
+  }, [accessToken, artistIds]);
 
   return (
     <div style={{ width: 500 }}>
