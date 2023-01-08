@@ -142,7 +142,7 @@ function Player(props) {
         width: "500px",
       }}
     >
-      {!currentlyPlaying && (
+      {!currentlyPlaying ? (
         <Container>
           <Container
             sx={{
@@ -210,8 +210,7 @@ function Player(props) {
             </Container>
           </Container>
         </Container>
-      )}
-      {currentlyPlaying && (
+      ) : (
         <Container>
           <Container
             sx={{

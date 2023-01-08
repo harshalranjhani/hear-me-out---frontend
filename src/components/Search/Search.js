@@ -62,7 +62,7 @@ export default function Search() {
     //   getRecommendations();
     // }
     getRecommendations();
-  }, [accessToken, artistIds]);
+  }, [accessToken, artists]);
 
   return (
     <div style={{ width: 500 }}>
