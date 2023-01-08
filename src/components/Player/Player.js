@@ -222,8 +222,8 @@ function Player(props) {
           >
             <img
               style={{ height: "200px", width: "200px" }}
-              src={currentlyPlaying.item.album.images[1].url}
-              alt={currentlyPlaying.item.name}
+              src={currentlyPlaying?.item?.album.images[1].url}
+              alt={currentlyPlaying?.item?.name}
             ></img>
           </Container>
           <Container
@@ -281,10 +281,10 @@ function Player(props) {
                   gutterBottom
                 >
                   <AudiotrackIcon sx={{ marginTop: 1 }} />
-                  {currentlyPlaying.item.name}
+                  {currentlyPlaying.item?.name}
                 </Typography>
                 <Typography style={{ width: "200px" }}>
-                  {currentlyPlaying.item.artists
+                  {currentlyPlaying.item?.artists
                     .map((artist) => artist.name)
                     .join(", ")}
                 </Typography>

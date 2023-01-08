@@ -9,9 +9,12 @@ export default function useAuth(code) {
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
+  // const backendUrl = "https://hear-me-out-backend.vercel.app";
+  const backendUrl = "http://localhost:5000";
+
   useEffect(() => {
     axios
-      .post("https://hear-me-out-backend.vercel.app/login", { code })
+      .post(`${backendUrl}/login`, { code })
       .then((res) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
@@ -45,7 +48,9 @@ export default function useAuth(code) {
     if (!storedRefreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("https://hear-me-out-backend.vercel.app/refresh", { storedRefreshToken })
+        .post(`${backendUrl}/refresh`, {
+          storedRefreshToken,
+        })
         .then((res) => {
           setAccessToken(res.data.accessToken);
           setExpiresIn(res.data.expiresIn);

@@ -10,6 +10,9 @@ import axios from "axios";
 import { LyricsSharp } from "@mui/icons-material";
 import AssistantIcon from "@mui/icons-material/Assistant";
 
+// const backendUrl = "https://hear-me-out-backend.vercel.app";
+const backendUrl = "http://localhost:5000";
+
 export default function ArtistRecommendations({ recommendationData }) {
   const currentTrack = useSelector((state) => state.tracks.currentTrack);
   const [lyrics, setLyrics] = React.useState("");
@@ -18,7 +21,7 @@ export default function ArtistRecommendations({ recommendationData }) {
   React.useEffect(() => {
     if (!currentTrack.item) return;
     axios
-      .get("https://hear-me-out-backend.vercel.app/lyrics", {
+      .get(`${backendUrl}/lyrics`, {
         params: {
           title: currentTrack.item.name,
           artist: currentTrack.item.artists[0].name,
