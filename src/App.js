@@ -12,6 +12,7 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import Home from "./components/Home";
 import Feed from "./components/Feed/Feed";
 import { current } from "@reduxjs/toolkit";
+import PlaylistDetails from "./components/Playlists/PlaylistDetails";
 
 function App() {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -28,6 +29,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           {accessToken && <Route path="/feed" element={<Feed />} />}
+          {accessToken && (
+            <Route path="/playlist/:id" element={<PlaylistDetails />} />
+          )}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       )}
