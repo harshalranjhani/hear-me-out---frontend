@@ -45,6 +45,7 @@ function Player(props) {
       }
       dispatch(tracksActions.setCurrentTrack({ currentTrack: response.data }));
       setCurrentlyPlaying(response.data);
+      console.log(response.data);
       await axios.post(`${backendUrl}/new`, {
         song: response.data,
         author: userFound,
@@ -226,11 +227,19 @@ function Player(props) {
               marginTop: "-15vh",
             }}
           >
-            <img
-              style={{ height: "200px", width: "200px" }}
-              src={currentlyPlaying?.item?.album.images[1].url}
-              alt={currentlyPlaying?.item?.name}
-            ></img>
+            {currentlyPlaying.currently_playing_type === "ad" ? (
+              <img
+                style={{ height: "200px", width: "200px" }}
+                src="https://visme.co/blog/wp-content/uploads/2019/08/header-1200.gif"
+                alt="Advertisement"
+              ></img>
+            ) : (
+              <img
+                style={{ height: "200px", width: "200px" }}
+                src={currentlyPlaying?.item?.album.images[1].url}
+                alt={currentlyPlaying?.item?.name}
+              ></img>
+            )}
           </Container>
           <Container
             sx={{
@@ -281,19 +290,37 @@ function Player(props) {
             <Container>
               <Typography variant="h5" sx={{ margin: "auto" }}>
                 Now Playing <br />
-                <Typography
-                  style={{ width: "200px" }}
-                  variant="subtitle1"
-                  gutterBottom
-                >
-                  <AudiotrackIcon sx={{ marginTop: 1 }} />
-                  {currentlyPlaying.item?.name}
-                </Typography>
-                <Typography style={{ width: "200px" }}>
-                  {currentlyPlaying.item?.artists
-                    .map((artist) => artist.name)
-                    .join(", ")}
-                </Typography>
+                {currentlyPlaying.currently_playing_type === "ad" ? (
+                  <>
+                    <Typography
+                      style={{ width: "200px" }}
+                      variant="subtitle1"
+                      gutterBottom
+                    >
+                      <AudiotrackIcon sx={{ marginTop: 1 }} />
+                      Advertisements
+                    </Typography>
+                    <Typography style={{ width: "200px" }}>
+                      Advertisements
+                    </Typography>
+                  </>
+                ) : (
+                  <>
+                    <Typography
+                      style={{ width: "200px" }}
+                      variant="subtitle1"
+                      gutterBottom
+                    >
+                      <AudiotrackIcon sx={{ marginTop: 1 }} />
+                      {currentlyPlaying.item?.name}
+                    </Typography>
+                    <Typography style={{ width: "200px" }}>
+                      {currentlyPlaying.item?.artists
+                        .map((artist) => artist.name)
+                        .join(", ")}
+                    </Typography>
+                  </>
+                )}
               </Typography>
             </Container>
           </Container>
