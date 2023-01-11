@@ -22,6 +22,9 @@ function Player(props) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch();
   const [currentlyPlaying, setCurrentlyPlaying] = React.useState(null);
+  const backendUrl = "http://localhost:5000";
+  const userFound = useSelector((state) => state.user.user);
+  console.log(userFound);
 
   React.useEffect(() => {
     const getCurrentlyPlayingTrack = async () => {
@@ -42,6 +45,10 @@ function Player(props) {
       }
       dispatch(tracksActions.setCurrentTrack({ currentTrack: response.data }));
       setCurrentlyPlaying(response.data);
+      await axios.post(`${backendUrl}/new`, {
+        song: response.data,
+        author: userFound,
+      });
     };
     getCurrentlyPlayingTrack();
   }, [accessToken, songChange, dispatch]);
@@ -154,7 +161,7 @@ function Player(props) {
             <img
               style={{ height: "200px", width: "200px" }}
               src="https://dannythomson.com/wp-content/uploads/2020/05/itunes-3.png"
-              alt="sd"
+              alt="Not playing"
             ></img>
           </Container>
           <Container

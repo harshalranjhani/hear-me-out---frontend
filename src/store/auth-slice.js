@@ -4,8 +4,10 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     code: "",
-    accessToken: JSON.parse(localStorage.getItem("accessToken")) || "",
-    refreshToken: JSON.parse(localStorage.getItem("refreshToken")) || "",
+    accessToken:
+      JSON.parse(localStorage.getItem("userAccess"))?.accessToken || "",
+    refreshToken:
+      JSON.parse(localStorage.getItem("userAccess"))?.refreshToken || "",
     expiresIn: 3600,
   },
   reducers: {
