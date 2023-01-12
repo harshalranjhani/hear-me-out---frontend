@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Paper, Drawer, Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { uiActions } from "../../store/ui-slice";
+import { Link } from "react-router-dom";
 
 const FollowedArtists = () => {
   const isOpen = useSelector((state) => state.ui.artistsContainerOpen);
@@ -56,19 +57,24 @@ const FollowedArtists = () => {
               role="presentation"
               key={item.name}
             >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{
-                  color: "#344e41",
-                  "&:hover": {
-                    color: "white",
-                    cursor: "pointer",
-                  },
-                }}
+              <Link
+                to={`/artist/${item.id}`}
+                style={{ textDecoration: "none" }}
               >
-                {item.name}
-              </Typography>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{
+                    color: "#344e41",
+                    "&:hover": {
+                      color: "white",
+                      cursor: "pointer",
+                    },
+                  }}
+                >
+                  {item.name}
+                </Typography>
+              </Link>
             </Box>
           ))}
         </DrawerDiv>

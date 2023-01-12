@@ -5,21 +5,39 @@ const uiSlice = createSlice({
   initialState: {
     playlistsContainerOpen: false,
     artistsContainerOpen: false,
-    recentlyPlayedTracksContainerOpen: false
+    recentlyPlayedTracksContainerOpen: false,
+    showPlaylistSearchResults: false,
   },
   reducers: {
     togglePlaylistContainer(state, action) {
-      const newState = { ...state, playlistsContainerOpen: !state.playlistsContainerOpen };
+      const newState = {
+        ...state,
+        playlistsContainerOpen: !state.playlistsContainerOpen,
+      };
       return newState;
     },
     toggleArtistContainer(state, action) {
-      const newState = { ...state, artistsContainerOpen: !state.artistsContainerOpen };
+      const newState = {
+        ...state,
+        artistsContainerOpen: !state.artistsContainerOpen,
+      };
       return newState;
     },
-    toggleTracksContainer(state,action){
-      const newState = { ...state, recentlyPlayedTracksContainerOpen: !state.recentlyPlayedTracksContainerOpen };
+    toggleTracksContainer(state, action) {
+      const newState = {
+        ...state,
+        recentlyPlayedTracksContainerOpen:
+          !state.recentlyPlayedTracksContainerOpen,
+      };
       return newState;
-    }
+    },
+    toggleShowPlaylistsOnSearch(state, action) {
+      const newState = {
+        ...state,
+        showPlaylistSearchResults: !state.showPlaylistSearchResults,
+      };
+      return newState;
+    },
   },
 });
 

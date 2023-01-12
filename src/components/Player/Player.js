@@ -13,6 +13,7 @@ import classes from "./Player.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { tracksActions } from "../../store/tracks-slice";
+import { Link } from "react-router-dom";
 
 function Player(props) {
   const [playerPlaying, setPlayerPlaying] = useState(false);
@@ -38,7 +39,7 @@ function Player(props) {
           },
         }
       );
-      // console.log(response);
+      // console.log(response.data);
       // playerPlaying = response.data.is_playing;
       setPlayerPlaying(response.data.is_playing);
       if (response.status === 204) {
@@ -316,9 +317,15 @@ function Player(props) {
                       {currentlyPlaying.item?.name}
                     </Typography>
                     <Typography style={{ width: "200px" }}>
-                      {currentlyPlaying.item?.artists
-                        .map((artist) => artist.name)
-                        .join(", ")}
+                      {currentlyPlaying.item?.artists.map((artist) => (
+                        <Link
+                          to={`/artist/${artist.id}`}
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          {artist.name}
+                          {", "}
+                        </Link>
+                      ))}
                     </Typography>
                   </>
                 )}

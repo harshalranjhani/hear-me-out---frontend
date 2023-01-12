@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import Feed from "./components/Feed/Feed";
 import { current } from "@reduxjs/toolkit";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails";
+import ArtistDetails from "./components/Artists/ArtistDetails";
 
 function App() {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -31,6 +32,9 @@ function App() {
           {accessToken && <Route path="/feed" element={<Feed />} />}
           {accessToken && (
             <Route path="/playlist/:id" element={<PlaylistDetails />} />
+          )}
+          {accessToken && (
+            <Route path="/artist/:id" element={<ArtistDetails />} />
           )}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
