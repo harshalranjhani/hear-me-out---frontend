@@ -25,7 +25,7 @@ const pages = ["Playlists", "Followed Artists"];
 const settings = ["Profile", "Recent Tracks"];
 
 // const backendUrl = "https://hear-me-out-backend.vercel.app";
-const backendUrl = "http://localhost:5000"
+const backendUrl = "http://localhost:5000";
 
 const ResponsiveAppBar = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);

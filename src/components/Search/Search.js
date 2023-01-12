@@ -2,16 +2,24 @@ import React, { useCallback, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Input from "@mui/material/Input";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 import SearchResults from "./SearchResults";
 import ArtistRecommendations from "./ArtistRecommendations";
+import { Button } from "@mui/material";
+import { uiActions } from "../../store/ui-slice";
 
 export default function Search() {
   const searchTerm = useRef();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [searchData, setSearchData] = React.useState([]);
   const [recommendationData, setRecommendationData] = React.useState([]);
+  const [buttonText, setButtonText] = React.useState(
+    "View playlists for this search query"
+  );
+  const viewStateFromRedux = useSelector(
+    (state) => state.ui.showPlaylistSearchResults
+  );
   const currentTrack = useSelector((state) => state.tracks.currentTrack);
   let artistIds = [];
   let artists = [];
@@ -28,7 +36,7 @@ export default function Search() {
       return;
     }
     const response = await axios.get(
-      `https://api.spotify.com/v1/search?q=${searchTerm.current.value}&type=track,artist,album&include_external=audio&limit=35`,
+      `https://api.spotify.com/v1/search?q=${searchTerm.current.value}&type=track,artist,album,playlist&include_external=audio&limit=35`,
       {
         headers: {
           Authorization: "Bearer " + accessToken,
@@ -64,31 +72,56 @@ export default function Search() {
     getRecommendations();
   }, [accessToken, artists]);
 
+  const dispatch = useDispatch();
+
+  const toggleShowPlaylists = () => {
+    dispatch(uiActions.toggleShowPlaylistsOnSearch());
+    console.log(viewStateFromRedux);
+    if (viewStateFromRedux) {
+      setButtonText("View playlists for this search query");
+    } else {
+      setButtonText("Back to Tracks and Artists");
+    }
+  };
+
   return (
-    <div style={{ width: 500 }}>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1 },
-        }}
-        onSubmit={handleSubmit}
-        width={500}
-        p={3}
-        noValidate
-        autoComplete="off"
-      >
-        <Input
-          onChange={(e) => {
-            if (e.target.value === "") {
-              setSearchData([]);
-            }
+    <div style={{ width: 700 }}>
+      <div style={{ display: "flex" }}>
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1 },
           }}
-          inputRef={searchTerm}
-          fullWidth
-          placeholder="Search for songs, artists and more"
-          inputProps={"search"}
-        />
-      </Box>
+          onSubmit={handleSubmit}
+          width={500}
+          p={3}
+          noValidate
+          autoComplete="off"
+        >
+          <Input
+            onChange={(e) => {
+              if (e.target.value === "") {
+                setSearchData([]);
+              }
+            }}
+            inputRef={searchTerm}
+            fullWidth
+            placeholder="Search for songs, artists and more"
+            inputProps={"search"}
+          />
+        </Box>
+        {searchData.length === 0 ? (
+          <></>
+        ) : (
+          <Button
+            variant="primary"
+            style={{ width: "500px" }}
+            onClick={toggleShowPlaylists}
+          >
+            {buttonText}
+          </Button>
+        )}
+      </div>
       {searchData.length === 0 ? (
         <ArtistRecommendations recommendationData={recommendationData} />
       ) : (
