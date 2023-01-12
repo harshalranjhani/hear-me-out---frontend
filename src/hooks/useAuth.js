@@ -9,8 +9,8 @@ export default function useAuth(code) {
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
 
-  // const backendUrl = "https://hear-me-out-backend.vercel.app";
-  const backendUrl = "http://localhost:5000";
+  const backendUrl = "https://hear-me-out-backend.vercel.app";
+  // const backendUrl = "http://localhost:5000";
 
   useEffect(() => {
     axios

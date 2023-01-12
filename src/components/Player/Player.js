@@ -22,7 +22,8 @@ function Player(props) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch();
   const [currentlyPlaying, setCurrentlyPlaying] = React.useState(null);
-  const backendUrl = "http://localhost:5000";
+  // const backendUrl = "http://localhost:5000";
+  const backendUrl = "https://hear-me-out-backend.vercel.app";
   const userFound = useSelector((state) => state.user.user);
   console.log(userFound);
 
