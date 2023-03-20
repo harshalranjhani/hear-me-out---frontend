@@ -1,6 +1,26 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
 body {
   max-height: 100vh;
+}
+
+.largescreen {
+  display: none;
+}
+
+@media screen and (max-width: 1280px) {
+  .largescreen {
+    position: fixed;
+    background: #1db954;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    display: flex;
+  }
 }

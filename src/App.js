@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import Login from "./components/Login/Login";
@@ -14,12 +15,23 @@ import Feed from "./components/Feed/Feed";
 import { current } from "@reduxjs/toolkit";
 import PlaylistDetails from "./components/Playlists/PlaylistDetails";
 import ArtistDetails from "./components/Artists/ArtistDetails";
+import LargeScreen from "./components/LargeScreen/LargeScreen";
+import useWindowSize from "./utils";
 
 function App() {
   const accessToken = useSelector((state) => state.auth.accessToken);
   // const accessToken = JSON.parse(localStorage.getItem("accessToken"));
   // console.log(accessToken);
   const currentUser = useSelector((state) => state.user.user);
+  const size = useWindowSize();
+  const [displayWidth, setDisplayWidth] = useState(size.width);
+  useEffect(() => {
+    setDisplayWidth(size.width);
+  }, [size]);
+
+  if (displayWidth < 1280) {
+    return <LargeScreen />;
+  }
   return (
     <div className="App">
       <Navbar />
