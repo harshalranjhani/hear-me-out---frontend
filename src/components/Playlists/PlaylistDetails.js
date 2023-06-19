@@ -65,7 +65,7 @@ const PlaylistDetails = () => {
           <strong>Try logging out and logging back in!</strong>
         </Alert>
       )}
-      {user.display_name && (
+      {user?.display_name && (
         <div style={{ display: "flex" }}>
           <div>
             <img
@@ -133,7 +133,7 @@ const PlaylistDetails = () => {
                     <ListItemAvatar>
                       <Avatar
                         alt={track?.track?.name}
-                        src={track?.track?.album?.images[2].url}
+                        src={track?.track?.album?.images[2]?.url}
                       />
                     </ListItemAvatar>
                     <ListItemText
