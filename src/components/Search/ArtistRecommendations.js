@@ -23,8 +23,8 @@ export default function ArtistRecommendations({ recommendationData }) {
     axios
       .get(`${backendUrl}/lyrics`, {
         params: {
-          title: currentTrack.item.name,
-          artist: currentTrack.item.artists[0].name,
+          title: currentTrack?.item?.name,
+          artist: currentTrack?.item?.artists[0]?.name,
         },
       })
       .then((res) =>
@@ -45,7 +45,7 @@ export default function ArtistRecommendations({ recommendationData }) {
         >
           <div>
             <Typography variant="h6" pl={2}>
-              <AssistantIcon></AssistantIcon>More Like "{currentTrack.item.name}
+              <AssistantIcon></AssistantIcon>More Like "{currentTrack?.item?.name}
               "
             </Typography>
             <List
@@ -81,7 +81,7 @@ export default function ArtistRecommendations({ recommendationData }) {
                     <ListItemAvatar>
                       {track.album.images.length && (
                         <Avatar
-                          alt={track.name}
+                          alt={track?.name}
                           src={track.album.images[2].url || ""}
                         />
                       )}
@@ -90,7 +90,7 @@ export default function ArtistRecommendations({ recommendationData }) {
                       )}
                     </ListItemAvatar>
                     <ListItemText
-                      primary={track.name}
+                      primary={track?.name}
                       secondary={
                         <React.Fragment>
                           <Typography
@@ -100,7 +100,7 @@ export default function ArtistRecommendations({ recommendationData }) {
                             color="text.primary"
                           >
                             {track.artists
-                              .map((artist) => artist.name)
+                              .map((artist) => artist?.name)
                               .join(", ")}
                           </Typography>
                           {/* {" — I'll be in your neighborhood doing errands this…"} */}

@@ -59,12 +59,12 @@ export default function SearchResults({ searchData }) {
                   >
                     <ListItemAvatar>
                       <Avatar
-                        alt={track.name}
-                        src={track.album.images[2].url}
+                        alt={track?.name}
+                        src={track?.album?.images[2]?.url}
                       />
                     </ListItemAvatar>
                     <ListItemText
-                      primary={track.name}
+                      primary={track?.name}
                       secondary={
                         <React.Fragment>
                           <Typography
@@ -74,7 +74,7 @@ export default function SearchResults({ searchData }) {
                             color="text.primary"
                           >
                             {track.artists
-                              .map((artist) => artist.name)
+                              .map((artist) => artist?.name)
                               .join(", ")}
                           </Typography>
                           {/* {" — I'll be in your neighborhood doing errands this…"} */}
@@ -125,10 +125,10 @@ export default function SearchResults({ searchData }) {
                     key={album.uri}
                   >
                     <ListItemAvatar>
-                      <Avatar alt={album.name} src={album.images[2].url} />
+                      <Avatar alt={album?.name} src={album?.images[2]?.url} />
                     </ListItemAvatar>
                     <ListItemText
-                      primary={album.name}
+                      primary={album?.name}
                       secondary={
                         <React.Fragment>
                           <Typography
@@ -138,7 +138,7 @@ export default function SearchResults({ searchData }) {
                             color="text.primary"
                           >
                             {album.artists
-                              .map((artist) => artist.name)
+                              .map((artist) => artist?.name)
                               .join(", ")}
                           </Typography>
                           {`- ${album.album_type}`}
@@ -200,12 +200,12 @@ export default function SearchResults({ searchData }) {
                       >
                         <ListItemAvatar>
                           <Avatar
-                            alt={playlist.name}
+                            alt={playlist?.name}
                             src={playlist?.images[2]?.url}
                           />
                         </ListItemAvatar>
                         <ListItemText
-                          primary={playlist.name}
+                          primary={playlist?.name}
                           secondary={
                             <React.Fragment>
                               <Typography

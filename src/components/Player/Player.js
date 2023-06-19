@@ -322,7 +322,7 @@ function Player(props) {
                           to={`/artist/${artist.id}`}
                           style={{ textDecoration: "none", color: "black" }}
                         >
-                          {artist.name}
+                          {artist?.name}
                           {", "}
                         </Link>
                       ))}

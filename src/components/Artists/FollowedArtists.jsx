@@ -55,7 +55,7 @@ const FollowedArtists = () => {
               width="250px"
               textAlign="center"
               role="presentation"
-              key={item.name}
+              key={item?.name}
             >
               <Link
                 to={`/artist/${item.id}`}
@@ -72,7 +72,7 @@ const FollowedArtists = () => {
                     },
                   }}
                 >
-                  {item.name}
+                  {item?.name}
                 </Typography>
               </Link>
             </Box>

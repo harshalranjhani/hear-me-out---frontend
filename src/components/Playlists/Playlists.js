@@ -84,7 +84,7 @@ const Playlists = () => {
               width="250px"
               textAlign="center"
               role="presentation"
-              key={item.name}
+              key={item?.name}
             >
               <Link
                 to={`/playlist/${item.id}`}
@@ -101,7 +101,7 @@ const Playlists = () => {
                     },
                   }}
                 >
-                  {item.name}
+                  {item?.name}
                 </Typography>
               </Link>
             </Box>

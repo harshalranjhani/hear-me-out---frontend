@@ -82,7 +82,7 @@ const RecentTracks = () => {
                   },
                 }}
               >
-                {item.track.name} : <i>{item.track.album.name}</i>
+                {item.track?.name} : <i>{item?.track?.album?.name}</i>
               </Typography>
             </Box>
           ))}
