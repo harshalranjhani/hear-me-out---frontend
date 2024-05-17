@@ -17,6 +17,7 @@ import PlaylistDetails from "./components/Playlists/PlaylistDetails";
 import ArtistDetails from "./components/Artists/ArtistDetails";
 import LargeScreen from "./components/LargeScreen/LargeScreen";
 import useWindowSize from "./utils";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const accessToken = useSelector((state) => state.auth.accessToken);
