@@ -10,6 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Moment from "react-moment";
 import { Alert, AlertTitle } from "@mui/material";
+import { Analytics } from "@vercel/analytics/react";
 
 const PlaylistDetails = () => {
   const [playlistData, setPlaylistData] = useState({});
@@ -39,6 +40,7 @@ const PlaylistDetails = () => {
   }, [accessToken, playlistId]);
   return (
     <>
+    <Analytics key={"playlist_details"} route={`/playlist/${playlistId}`} />
       {!user.display_name && (
         <Alert
           severity="error"

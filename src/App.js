@@ -36,6 +36,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <Analytics key={"main"} />
       {accessToken && <Playlists />}
       {accessToken && <FollowedArtists />}
       {accessToken && <RecentTracks />}

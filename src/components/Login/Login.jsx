@@ -5,6 +5,7 @@ import classes from "./Login.module.css";
 import Marquee from "react-fast-marquee";
 import MarqueeText from "../MarqueeText/MarqueeText";
 import useAuth from "../../hooks/useAuth";
+import { Analytics } from "@vercel/analytics/react";
 
 const clientId = "46f8b7fe2f6a4e36b35466d68bb81637";
 const redirectUrl = "https://hear-me-out.harshalranjhani.in/";
@@ -50,6 +51,7 @@ function Login(props) {
 
   return (
     <div>
+      <Analytics key={"login_page"} />
       {!accessToken && (
         <div className={classes.buttonDiv}>
           <SpotifyButton onClick={clickHandler}>Connect Spotify</SpotifyButton>
